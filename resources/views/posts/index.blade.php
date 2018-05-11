@@ -13,7 +13,7 @@
     <div class="row mb-4">
         <div class="col-lg-5 col-xl-4">
             <div class="view overlay rounded z-depth-1-half mb-lg-0 mb-4">
-                <img class="img-fluid" src="https://mdbootstrap.com/img/Photos/Others/images/31.jpg" alt="Sample image">
+                <img class="img-fluid" src="https://mdbootstrap.com/img/Photos/Others/images/31.jpg" alt="Image Post">
                 <a>
                     <div class="mask rgba-white-slight"></div>
                 </a>
