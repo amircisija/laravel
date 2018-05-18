@@ -16,7 +16,7 @@
                     
                     <h3>Your Blog Posts</h3>
                     @if(count($posts) > 0)
-                    <table class="table table-striped">
+                    <table class="table table-striped table-bordered">
                         <tr>
                             <th>Title</th>
                             <th></th>
@@ -24,9 +24,14 @@
                         </tr>
                         @foreach($posts as $post)
                         <tr>
-                        <th>{{ $post->title}}</th>
-                            <th><a href="/posts/{{$post->id}}/edit" class="btn btn-success">Edit</a></th>
-                            <th></th>
+                            <td>{{ $post->title}}</td>
+                            <td><a href="/posts/{{$post->id}}/edit" class="btn btn-success">Edit</a></td>
+                            <td>
+                                {!!Form::open(['action' => ['PostsController@destroy', $post->id], 'method' => 'POST',  'class' => 'float-right'])!!} 
+                                    {{Form::hidden('_method', 'DELETE')}} 
+                                    {{Form::submit('Delete', ['class' => 'btn btn-danger'])}} 
+                                {!!Form::close()!!}
+                            </td>
                         </tr>
                         @endforeach
                     </table>

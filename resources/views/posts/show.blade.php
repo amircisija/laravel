@@ -1,7 +1,7 @@
 @extends('layouts.app')
 @section('content')
 
-<a href="/posts" class="btn btn-secondary mb-4">Go back</a>
+<a href="/posts" class="btn btn-deep-orange btn-md mb-4">Go back</a>
 
 <div class="card">
     <div class="card-header">
@@ -13,12 +13,16 @@
     <div class="card-footer">
         <small>Written on <em> {{$post->created_at}} </em></small>
         <hr>
-        <a href="/posts/{{$post->id}}/edit" class="btn btn-info">Edit</a>
+        @if(!Auth::guest())
+            @if(!Auth::user()->id == $post->user_id)
+            <a href="/posts/{{$post->id}}/edit" class="btn btn-info btn-md">Edit</a>
 
-        {!!Form::open(['action' => ['PostsController@destroy', $post->id], 'method' => 'POST', 'class' => 'float-right'])!!}
-            {{Form::hidden('_method', 'DELETE')}}
-            {{Form::submit('Delete', ['class' => 'btn btn-danger'])}}
+            {!!Form::open(['action' => ['PostsController@destroy', $post->id], 'method' => 'POST', 'class' => 'float-right'])!!}
+                {{Form::hidden('_method', 'DELETE')}}
+                {{Form::submit('Delete', ['class' => 'btn btn-danger btn-md'])}}
             {!!Form::close()!!}
+            @endif
+        @endif
     </div>
 </div>  
  
