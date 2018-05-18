@@ -23,19 +23,21 @@
             <h3 class="font-weight-bold mb-3">
                 <strong>{{$post->title}}</strong>
             </h3>
-            <!-- Excerpt -->
-            <p class="dark-grey-text">{{ $post->body}}</p>
-            <!-- Post data -->
-            <p>by
-                <a class="font-weight-bold">Jessica Clark</a>, {{ $post->created_at}}</p>
-            <!-- Read more button -->
+            <p class="dark-grey-text">{!!$post->body!!}</p>
+            <p>
+            <a class="font-weight-bold"></a>{{ $post->created_at}}</p>
             <a href="/posts/{{$post->id}}" class="btn btn-primary btn-md">Read more</a>
         </div>
     </div>
 @endforeach
 @else
-    <p>No posts foun</p>
+    <p>No posts found</p>
 @endif
+    <div class="row">
+        <div class="col-sm-12">
+            {!! $posts->render() !!}
+        </div>
+    </div>
 
 </section>
 

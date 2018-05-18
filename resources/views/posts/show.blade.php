@@ -8,11 +8,19 @@
         <h3 class="card-title">{{ $post->title }}</h3>
     </div>
     <div class="card-body">
-        <p>{{ $post->body }}</p>    
+        {!!$post->body!!}   
     </div>
     <div class="card-footer">
         <small>Written on <em> {{$post->created_at}} </em></small>
+        <hr>
+        <a href="/posts/{{$post->id}}/edit" class="btn btn-info">Edit</a>
+
+        {!!Form::open(['action' => ['PostsController@destroy', $post->id], 'method' => 'POST', 'class' => 'float-right'])!!}
+            {{Form::hidden('_method', 'DELETE')}}
+            {{Form::submit('Delete', ['class' => 'btn btn-danger'])}}
+            {!!Form::close()!!}
     </div>
-</div>     
+</div>  
+ 
 
 @endsection
