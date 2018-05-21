@@ -15,13 +15,16 @@
         <hr>
         @if(!Auth::guest())
             @if(!Auth::user()->id == $post->user_id)
-            <a href="/posts/{{$post->id}}/edit" class="btn btn-info btn-md">Edit</a>
+            
 
             {!!Form::open(['action' => ['PostsController@destroy', $post->id], 'method' => 'POST', 'class' => 'float-right'])!!}
                 {{Form::hidden('_method', 'DELETE')}}
                 {{Form::submit('Delete', ['class' => 'btn btn-danger btn-md'])}}
+
+                
             {!!Form::close()!!}
             @endif
+            <a href="/posts/{{$post->id}}/edit" class="btn btn-info btn-md">Edit</a>
         @endif
     </div>
 </div>  
